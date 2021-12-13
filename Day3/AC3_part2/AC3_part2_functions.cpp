@@ -38,7 +38,6 @@ std::vector<short int> find_oxygen_rate(std::vector<std::vector<short int>> cons
         for(size_t j = 0, dim = tmp.size(); j < dim; ++j){tmp[j] = oxygen[j];}  // Overwrite the oxygen report.
         oxygen.resize(0);
     }
-
     return oxygen[0];                                        // Only 1 report remains at the end.
 }
 
