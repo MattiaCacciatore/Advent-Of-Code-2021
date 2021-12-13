@@ -5,20 +5,18 @@
 #include <string>
 //---------------------------------ADVENT OF CODE 2021 - DAY 1 - PART II ----------------------------------
 int count_from_file(std::istream& str){ // Stream.
-    std::string line;
-
-    getline(str, line); // E.g. line = "163".
-    if(!str.good()){
+    if(!str.good()){         // Check if the file exists.
     	str.clear();
     	return -1;
-	}
+    }
 
+    std::string line;
     std::istringstream iss; // Input stream to operate on strings.
-    int s_w_one = 0, s_w_two = 0, s_w_three = 0, curr_sum = 0, prev_sum = 0, n_count = 1; // Sliding windows and counter.
-    getline(str, line);
-    iss.clear();
+    int s_w_one = 0, s_w_two = 0, s_w_three = 0, curr_sum = 0, prev_sum = 0, n_count = 0; // Sliding windows and counter.
+    getline(str, line);     // E.g. line = "163".
+    iss.clear();            // Clear the stream.
     iss.str(line);
-    iss >> s_w_one;
+    iss >> s_w_one;         // E.g. "163" --> 163
     getline(str, line);
     iss.clear();
     iss.str(line);
@@ -29,7 +27,7 @@ int count_from_file(std::istream& str){ // Stream.
     iss >> s_w_three;
     curr_sum = s_w_one + s_w_two + s_w_three;
 
-    for(;!str.eof();){
+    for(;!str.eof();){      // Until the end of file...
         if(curr_sum > prev_sum){ n_count++;}
         prev_sum = curr_sum;
         getline(str, line);
