@@ -3,8 +3,8 @@
 //------------------------------------------HELPER FUNCTIONS-----------------------------------------------
 int bit_vector_to_int(std::vector<short int> const &v){
     long long int num = 0;
-	std::vector<short int> tmp(v);
-	std::reverse(tmp.begin(), tmp.end()); // E.g. 1100 --> 0011 so it can computes the result correctly.
+    std::vector<short int> tmp(v);
+    std::reverse(tmp.begin(), tmp.end()); // E.g. 1100 --> 0011 so it can computes the result correctly.
 
     for(size_t i = 0; i < SIZE; ++i){
         if(tmp[i] == 1){num += pow(2,i);}
@@ -47,20 +47,20 @@ std::vector<std::vector<short int>> read_from_file(std::istream& str){
 }
 
 std::vector<short int> find_most_common_bit_number(std::vector<std::vector<short int>> const &m){
-	std::vector<short int> g_r; // Gamma rate vector with most common bits.
-	g_r.resize(SIZE);           // All numbers set to 0.
-	long long int zeroes, ones;
+    std::vector<short int> g_r; // Gamma rate vector with most common bits.
+    g_r.resize(SIZE);           // All numbers set to 0.
+    long long int zeroes, ones;
 
     for(size_t i = 0; i < SIZE; ++i){
         ones = zeroes = 0;
         for(size_t j = 0, dim = m.size(); j < dim; ++j){ // Counting j-th bit for all i-th numbers.
-                if(m[j][i] == 1) ones++;
-                else zeroes++;
+            if(m[j][i] == 1) ones++;
+            else zeroes++;
         }
 
         if(ones > zeroes){g_r[i] = 1;} // Most common bit?
     }
-	return g_r;
+    return g_r;
 }
 
 int calculate_gamma_rate(std::vector<short int> const &v){
@@ -69,13 +69,13 @@ int calculate_gamma_rate(std::vector<short int> const &v){
 }
 
 int calculate_epsilon_rate(std::vector<short int> const &v){
-	std::vector<short int> tmp(v);
-	flip_bit_vector(tmp);             // If v is the bit vector with most common bits, just flipping it
-	int e_r = bit_vector_to_int(tmp); // and it becomes the bit vector with least common bits.
-	return e_r;
+    std::vector<short int> tmp(v);
+    flip_bit_vector(tmp);             // If v is the bit vector with most common bits, just flipping it
+    int e_r = bit_vector_to_int(tmp); // and it becomes the bit vector with least common bits.
+    return e_r;
 }
 
 long long int calculate_power_consumption(int g_r, int e_r){
-	long long int p_c = g_r * e_r;
-	return p_c;
+    long long int p_c = g_r * e_r;
+    return p_c;
 }
