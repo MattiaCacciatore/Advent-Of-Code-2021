@@ -12,7 +12,7 @@ int count_from_file(std::istream& str){ // Stream.
 
     std::string line;
     std::istringstream iss; // Input stream to operate on strings.
-    int curr_num = 0, prev_num = std::numeric_limits<int>::max(), n_count = 1; // Numbers and counter.
+    int curr_num = 0, prev_num = std::numeric_limits<int>::max(), n_count = 0; // Numbers and counter.
 
     for(;!str.eof();){      // Until the end of file...
         getline(str, line); 
