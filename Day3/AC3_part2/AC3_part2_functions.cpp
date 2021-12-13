@@ -19,7 +19,7 @@ std::vector<short int> find_oxygen_rate(std::vector<std::vector<short int>> cons
         ones = zeroes = 0;                                   // Reset.
 
         for(size_t j = 0, dim = tmp.size(); j < dim; ++j){   // Counting ones and zeroes on the
-            if(tmp[j][i] == 1) ones++;                       // i-th bit in the carbon report.
+            if(tmp[j][i] == 1) ones++;                       // i-th bit in the oxygen report.
             else zeroes++;
         }
 
