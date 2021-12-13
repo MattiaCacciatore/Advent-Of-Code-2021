@@ -18,7 +18,7 @@ long long int readFromFile(std::istream& str){
         getline(str, line);
         iss.clear();
         iss.str(line);
-		iss >> dir;
+	iss >> dir;
         if(dir == "forward"){
             iss >> mov;
             forwrd += (mov[0] - '0'); // Horizontal position.
