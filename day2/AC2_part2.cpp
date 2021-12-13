@@ -7,10 +7,10 @@ long long int readFromFile(std::istream& str){
     if(!str.good()){
     	str.clear();
     	return -1;
-	}
+    }
 
-	std::string line, dir, mov; // Direction and movement.
-	std::istringstream iss;
+    std::string line, dir, mov; // Direction and movement.
+    std::istringstream iss;
     int forwrd = 0, aim = 0;
     long long depth = 0;
 
