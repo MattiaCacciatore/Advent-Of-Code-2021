@@ -1,11 +1,11 @@
 #include <iostream>
-#include <sstream>
-#include <fstream>
+#include <sstream>   // iss
+#include <fstream>   // ifs
 #include <string>
 #include <cstdlib>
 #include <vector>
-#include <algorithm>
-#include <cmath>
+#include <algorithm> // reverse
+#include <cmath>     // pow
 
 #define SIZE 12
 //----------------------------------------FUNCTIONS------------------------------------------
