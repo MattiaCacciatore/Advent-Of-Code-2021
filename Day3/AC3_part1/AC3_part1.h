@@ -7,7 +7,7 @@
 #include <algorithm> // reverse
 #include <cmath>     // pow
 
-#define SIZE 12
+#define SIZE 12      // bits
 //----------------------------------------FUNCTIONS------------------------------------------
 void print_matrix(std::vector<std::vector<short int>> const &);
 
