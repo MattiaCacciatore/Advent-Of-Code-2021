@@ -3,7 +3,7 @@
 //------------------------------------------HELPER FUNCTIONS-----------------------------------------------
 int bit_vector_to_int(std::vector<short int> v){
     long long int num = 0;
-	std::reverse(v.begin(), v.end()); // E.g. 1100 --> 0011 so it can computes the result correctly.
+    std::reverse(v.begin(), v.end()); // E.g. 1100 --> 0011 so it can computes the result correctly.
 
     for(size_t i = 0; i < SIZE; ++i){
         if(v[i] == 1){num += pow(2,i);}
