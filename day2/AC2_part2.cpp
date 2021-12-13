@@ -28,10 +28,14 @@ long long int readFromFile(std::istream& str){
             iss >> mov;
             aim -= (mov[0] - '0');
         }
-        if(dir == "down"){
+        else if(dir == "down"){
             iss >> mov;
             aim += (mov[0] - '0');
         }
+	else{
+	   std::cerr << "Invalid input format!\n";
+	   return -1;
+	}
     }
     str.clear();
     return depth * forwrd;
