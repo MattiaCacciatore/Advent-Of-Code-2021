@@ -9,6 +9,6 @@ int main(){
     std::ifstream ifs_two(file.c_str());
     std::vector<short int> numbers = read_numbers_from_file(ifs_two);
     long long int ans = lose_bingo(cards, numbers);
-    //std::cout << ans << "\n";
+    //std::cout << ans << "\n"; // Idk why the answer is different after each run.
     return 0;
 }
