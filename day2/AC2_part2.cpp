@@ -11,8 +11,7 @@ long long int readFromFile(std::istream& str){
 
     std::string line, dir, mov; // Direction and movement.
     std::istringstream iss;
-    int forwrd = 0, aim = 0;
-    long long int depth = 0;
+    long long int depth = 0, forwrd = 0, aim = 0;
 
     for(;!str.eof();){
         getline(str, line);
