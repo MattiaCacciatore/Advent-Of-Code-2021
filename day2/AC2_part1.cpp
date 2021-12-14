@@ -7,10 +7,10 @@ long long int readFromFile(std::istream& str){
     if(!str.good()){
     	str.clear();
     	return -1;
-	  }
+    }
 
-	  std::string line, dir, mov; // Direction and movement.
-	  std::istringstream iss;
+    std::string line, dir, mov; // Direction and movement.
+    std::istringstream iss;
     int h_p = 0, up = 0, down = 0;
     long long int depth = 0;
 
@@ -18,12 +18,12 @@ long long int readFromFile(std::istream& str){
         getline(str, line);
         iss.clear();
         iss.str(line);
-		    iss >> dir;
+        iss >> dir;
 
-		    if(dir == "forward"){
+        if(dir == "forward"){
             iss >> mov;
             h_p += (mov[0] - '0'); // Horizontal position
-		    }
+        }
         else if(dir == "up"){
             iss >> mov;
             up += (mov[0] - '0'); // Vertical position decrease.
