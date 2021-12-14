@@ -22,7 +22,7 @@ long long int readFromFile(std::istream& str){
         if(dir == "forward"){
             iss >> mov;
             forwrd += (mov[0] - '0'); // Horizontal position.
-            if(aim != 0) depth += (aim * (mov[0] - '0')); // Depth.
+            depth += (aim * (mov[0] - '0')); // Depth.
         }
         else if(dir == "up"){
             iss >> mov;
