@@ -2,7 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-
+//---------------------------------ADVENT OF CODE 2021 - DAY 2 - PART II ----------------------------------
 long long int readFromFile(std::istream& str){
     if(!str.good()){
     	str.clear();
