@@ -7,24 +7,24 @@ void mark_vent(std::vector<std::vector<int>> &v_m, std::vector<int> const &v){
     y1 = v[1];
     x2 = v[2];
     y2 = v[3];
-    if(x1 == x2 || y1 == y2){ // Horizontal and vertical vents.
+    if(x1 == x2 || y1 == y2){              // Horizontal and vertical vents.
         x_max = x1 > x2 ? x1 : x2;
         x_min = x1 < x2 ? x1 : x2;
         y_max = y1 > y2 ? y1 : y2;
         y_min = y1 < y2 ? y1 : y2;
         for(int x = x_min; x <= x_max; ++x){
             for(int y = y_min; y <= y_max; ++y){
-                v_m[x][y] = v_m[x][y] + 1;
+                v_m[x][y] = v_m[x][y] + 1; // Mapping the vent.
             }
         }
     }
 }
 //-------------------------------------------------FUNCTIONS-----------------------------------------------
-std::vector<std::vector<short int>> read_vents_from_file(std::istream& str){
-    std::vector<std::vector<short int>> vents;
+std::vector<std::vector<int>> read_vents_from_file(std::istream& str){
+    std::vector<std::vector<int>> vents;
     if(str.good()){
         std::string line;
-        char garbage;
+        char garbage;       // See input.
         int x1, y1, x2, y2; // Coordinates.
         std::istringstream iss;
 
@@ -41,7 +41,7 @@ std::vector<std::vector<short int>> read_vents_from_file(std::istream& str){
             iss >> x2;
             iss >> garbage; // ,
             iss >> y2;
-            std::vector<short int> vent = {x1, y1, x2, y2};
+            std::vector<int> vent = {x1, y1, x2, y2};
             vents.push_back(vent);
         }
     }
@@ -50,7 +50,7 @@ std::vector<std::vector<short int>> read_vents_from_file(std::istream& str){
 }
 
 std::vector<std::vector<int>> create_map(size_t dim){
-    std::vector<std::vector<int>> v_map;
+    std::vector<std::vector<int>> v_map;  // Map 2D dim * dim.
     v_map.resize(dim);
     for(size_t i = 0; i < dim; ++i){v_map[i].resize(dim);}
     return v_map;
