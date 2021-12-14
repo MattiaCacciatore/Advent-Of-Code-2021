@@ -2,7 +2,7 @@
 //---------------------------------ADVENT OF CODE 2021 - DAY 3 - PART II ----------------------------------
 //------------------------------------------HELPER FUNCTIONS-----------------------------------------------
 int bit_vector_to_int(std::vector<short int> v){
-    long long int num = 0;
+    int num = 0;
     std::reverse(v.begin(), v.end()); // E.g. 1100 --> 0011 so it can computes the result correctly.
 
     for(size_t i = 0; i < SIZE; ++i){
