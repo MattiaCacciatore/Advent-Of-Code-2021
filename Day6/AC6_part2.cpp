@@ -45,20 +45,20 @@ std::vector<size_t> read_fish_from_file(std::istream& str){
             iss >> fish;
             for(;iss;){
                 iss >> garbage; // ,
-				if(fish == 0) s_f[0]++;       // Fishes reproduce on a 8-day cycle,
-				else if(fish == 1) s_f[1]++;  // so it's important to know how many
-				else if(fish == 2) s_f[2]++;  // fishes are there and which is their day cicle
-				else if(fish == 3) s_f[3]++;  // status. In order to avoid RAM saturation
-				else if(fish == 4) s_f[4]++;  // caused by immense vector/list, it's a most
-				else if(fish == 5) s_f[5]++;  // pratical way to record them in this form.
-				else if(fish == 6) s_f[6]++;
-				else if(fish == 7) s_f[7]++;
-				else if(fish == 8) s_f[8]++;
-				else{
-					std::cerr << "Invalid input format\n";
-					s_f.clear();
-					return s_f;
-				}
+		if(fish == 0) s_f[0]++;       // Fishes reproduce on a 8-day cycle,
+		else if(fish == 1) s_f[1]++;  // so it's important to know how many
+		else if(fish == 2) s_f[2]++;  // fishes are there and which is their day cicle
+		else if(fish == 3) s_f[3]++;  // status. In order to avoid RAM saturation
+		else if(fish == 4) s_f[4]++;  // caused by immense vector/list, it's a most
+		else if(fish == 5) s_f[5]++;  // pratical way to record them in this form.
+		else if(fish == 6) s_f[6]++;
+		else if(fish == 7) s_f[7]++;
+		else if(fish == 8) s_f[8]++;
+		else{
+		    std::cerr << "Invalid input format\n";
+		    s_f.clear();
+		    return s_f;
+		}
                 iss >> fish;
             }
         }
@@ -68,8 +68,8 @@ std::vector<size_t> read_fish_from_file(std::istream& str){
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-	// Make sure i don't mess it up. It's big enough.
-	//std::cout << std::numeric_limits<std::size_t>::max();
+    // Make sure i don't mess it up. It's big enough.
+    //std::cout << std::numeric_limits<std::size_t>::max();
     std::string file = "input_day6.txt";
     std::ifstream ifs(file.c_str());
     std::vector<size_t> school_fish = read_fish_from_file(ifs);
