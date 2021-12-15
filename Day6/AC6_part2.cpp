@@ -20,8 +20,11 @@ void daytime(std::vector<size_t> &s_f){
 }
 //-------------------------------------------------FUNCTIONS-----------------------------------------------
 size_t calculate_growth_rate(std::vector<size_t> &s_f, int days){
-    for(int d = 0; d < days; ++d){daytime(s_f);}
-    size_t total = s_f[0] + s_f[1] + s_f[2] + s_f[3] + s_f[4] + s_f[5] + s_f[6] + s_f[7] + s_f[8];
+    size_t total = 0;
+    if(s_f.size() == 9){
+       for(int d = 0; d < days; ++d){daytime(s_f);}
+       total = s_f[0] + s_f[1] + s_f[2] + s_f[3] + s_f[4] + s_f[5] + s_f[6] + s_f[7] + s_f[8];
+    }
     return total;
 }
 
