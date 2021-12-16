@@ -28,7 +28,7 @@ std::vector<short int> read_crab_from_file(std::istream& str){
             iss >> crab;
             for(;iss;){
                 iss >> garbage; // ,
-				c.push_back(crab);
+		c.push_back(crab);
                 iss >> crab;
             }
         }
@@ -46,8 +46,7 @@ long long int calculate_least_fuel(std::vector<short int> &c){
 		crab = c[i];   // Let's see if this crab position is the median.
 		for(size_t j = 0; j < dim; ++j){prev_fuel += summation(abs(c[j] - crab));} // Previous fuel consumption.
 		if(fuel > prev_fuel) fuel = prev_fuel; // Less fuel?
-	}
-	
+	}	
 	return fuel;
 }
 //---------------------------------------------------TEST--------------------------------------------------
