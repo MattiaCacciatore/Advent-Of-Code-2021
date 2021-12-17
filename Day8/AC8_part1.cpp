@@ -6,8 +6,8 @@
 //---------------------------------ADVENT OF CODE 2021 - DAY 8 - PART I -----------------------------------
 //----------------------------------------------FUNCTIONS--------------------------------------------------
 std::vector<int> read_digit_from_file(std::istream& str){
-	std::vector<int> d_c; // Digit counter.
-	d_c.resize(4);        // 1,4,7 and 8.
+    std::vector<int> d_c; // Digit counter.
+    d_c.resize(4);        // 1,4,7 and 8.
     if(str.good()){
         std::string line, digit;
         std::istringstream iss;
@@ -46,6 +46,6 @@ int main(){
     std::ifstream ifs(file.c_str());
     std::vector<int> digit_counter = read_digit_from_file(ifs);
     long long int ans = sum_vector(digit_counter);
-    std::cout << ans << "\n";
+    //std::cout << ans << "\n";
     return 0;
 }
