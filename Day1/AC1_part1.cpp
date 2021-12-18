@@ -28,6 +28,6 @@ uint64_t count_from_file(std::string input){
 int main(){
     uint64_t ans = count_from_file("input_day1.txt"); // Answer.
     std::cout << "***** ADVENT OF CODE 2021 - DAY 1 - PART I *****\n";
-    std::cout << "\nNumber of measurements larger than the previous ones: " << ans << "\n"; // First star *
+    //std::cout << "\nNumber of measurements larger than the previous ones: " << ans << "\n"; // First star *
     return 0;
 }
