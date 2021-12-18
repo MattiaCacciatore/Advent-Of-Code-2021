@@ -6,7 +6,7 @@
 //---------------------------------ADVENT OF CODE 2021 - DAY 9 - PART I -----------------------------------
 //----------------------------------------------FUNCTIONS--------------------------------------------------
 std::vector<std::vector<short int>> read_map_from_file(std::istream& str){
-	std::vector<std::vector<short int>> m; // Map.
+    std::vector<std::vector<short int>> m; // Map.
     if(str.good()){
         std::string line, cave;
         short int h;                       // Height.
