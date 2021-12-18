@@ -1,4 +1,4 @@
-// Mattia Cacciatore - Computer Science student at University of Genoa - Italy
+// Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include <iostream>
 #include <sstream>  // iss
 #include <fstream>  // ifs
