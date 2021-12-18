@@ -27,7 +27,7 @@ std::vector<std::vector<short int>> read_map_from_file(std::istream& str){
                 m.push_back(c);            // Cave complete.
                 c.clear();
             	iss >> cave;
-			}
+	    }
         }
     }
     str.clear();
