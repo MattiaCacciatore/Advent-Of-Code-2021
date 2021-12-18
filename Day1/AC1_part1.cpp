@@ -1,35 +1,33 @@
+// Mattia Cacciatore - Computer Science student at Genoa University - Italy
 #include <iostream>
-#include <limits>
-#include <sstream>
-#include <fstream>
+#include <limits>   // numeric_limit
+#include <sstream>  // iss
+#include <fstream>  // ifs
 #include <string>
 //---------------------------------ADVENT OF CODE 2021 - DAY 1 - PART I -----------------------------------
-int count_from_file(std::istream& str){ // Stream.
-    if(!str.good()){
-    	str.clear();
-    	return -1;
-    }
+int count_from_file(std::string input){
+    std::ifstream ifs(input);
+    uint64_t curr_num = 0, prev_num = std::numeric_limits<uint64_t>::max(), n_count = 0; // Numbers and counter.
+    if(ifs.good()){
+        std::string line;
+        std::istringstream iss; // Input stream to operate on strings.
 
-    std::string line;
-    std::istringstream iss; // Input stream to operate on strings.
-    int curr_num = 0, prev_num = std::numeric_limits<int>::max(), n_count = 0; // Numbers and counter.
-
-    for(;!str.eof();){      // Until the end of file...
-        getline(str, line); 
-        iss.clear();        // Clear and prepare the stream.
-        iss.str(line);      
-        iss >> curr_num;    // E.g. "163" --> 163.
-        if(curr_num > prev_num) n_count++;
-        prev_num = curr_num;
+        for(;!ifs.eof();){
+            getline(ifs, line);
+            iss.clear();
+            iss.str(line);
+            iss >> curr_num;
+            if(curr_num > prev_num) n_count++;
+            prev_num = curr_num;
+        }
     }
-    str.clear();
+    ifs.clear();
     return n_count;
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    std::string file = "input_day1.txt";
-    std::ifstream ifs(file.c_str());
-    int ans = count_from_file(ifs); // Answer.
-    //std::cout << ans << "\n";
+    uint64_t ans = count_from_file("input_day1.txt"); // Answer.
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 1 - PART I *****\n";
+    std::cout << "\nNumber of measurements larger than the previous ones: " << ans << "\n"; // First star *
     return 0;
 }
