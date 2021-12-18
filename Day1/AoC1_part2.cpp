@@ -28,7 +28,6 @@ uint64_t count_from_file(std::string input){
 
         for(;!ifs.eof();){
             if(curr_sum > prev_sum) n_count++;
-
             prev_sum = curr_sum;
             getline(ifs, line);
             iss.clear();
