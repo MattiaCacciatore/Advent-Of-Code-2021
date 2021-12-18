@@ -5,7 +5,7 @@
 #include <fstream>  // ifs
 #include <string>
 //---------------------------------ADVENT OF CODE 2021 - DAY 1 - PART I -----------------------------------
-int count_from_file(std::string input){
+uint64_t count_from_file(std::string input){
     std::ifstream ifs(input);
     uint64_t curr_num = 0, prev_num = std::numeric_limits<uint64_t>::max(), n_count = 0; // Numbers and counter.
     if(ifs.good()){
