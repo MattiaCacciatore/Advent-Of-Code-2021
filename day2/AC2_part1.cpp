@@ -42,6 +42,6 @@ uint64_t read_path_from_file(std::string input){
 int main(){
     uint64_t ans = read_path_from_file("input_day2.txt");
     std::cout << "***** ADVENT OF CODE 2021 - DAY 2 - PART I *****\n";
-    std::cout << "\nCurrent depth level of the submarine: " << ans << "\n"; // Second star **
+    //std::cout << "\nCurrent depth level of the submarine: " << ans << "\n"; // Second star **
     return 0;
 }
