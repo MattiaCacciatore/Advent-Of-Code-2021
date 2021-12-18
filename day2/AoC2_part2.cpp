@@ -25,9 +25,13 @@ uint64_t read_path_from_file(std::string input){
                 iss >> mov;
                 aim -= (mov[0] - '0');
             }
-            if(dir == "down"){
+            else if(dir == "down"){
                 iss >> mov;
                 aim += (mov[0] - '0');
+            }
+            else{
+                std::cerr << "Invalid format input!\n";
+                return -1;
             }
         }
     }
