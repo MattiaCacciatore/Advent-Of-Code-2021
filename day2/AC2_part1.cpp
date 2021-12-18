@@ -1,51 +1,47 @@
+// Mattia Cacciatore - Computer Science student at Genoa University - Italy
 #include <iostream>
-#include <sstream>
-#include <fstream>
+#include <sstream>  // iss
+#include <fstream>  // ifs
 #include <string>
 //---------------------------------ADVENT OF CODE 2021 - DAY 2 - PART I -----------------------------------
-long long int readFromFile(std::istream& str){
-    if(!str.good()){
-    	str.clear();
-    	return -1;
-    }
+uint64_t read_path_from_file(std::string input){
+    std::ifstream ifs(input);
+    uint64_t h_p = 0, up = 0, down = 0, depth = 0;
+    if(ifs.good()){
+        std::string line, dir, mov; // Direction and movement.
+        std::istringstream iss;
 
-    std::string line, dir, mov; // Direction and movement.
-    std::istringstream iss;
-    int h_p = 0, up = 0, down = 0;
-    long long int depth = 0;
-
-    for(;!str.eof();){
-        getline(str, line);
-        iss.clear();
-        iss.str(line);
-        iss >> dir;
-
-        if(dir == "forward"){
-            iss >> mov;
-            h_p += (mov[0] - '0'); // Horizontal position
-        }
-        else if(dir == "up"){
-            iss >> mov;
-            up += (mov[0] - '0'); // Vertical position decrease.
-        }
-        else if(dir == "down"){
-            iss >> mov;
-            down += (mov[0] - '0'); // Vertical position increase.
-        }
-        else{
-            std::cerr << "Invalid format input!\n";
-            return -1;
+        for(;!ifs.eof();){
+            getline(ifs, line);
+            iss.clear();
+            iss.str(line);
+            iss >> dir;
+            if(dir == "forward"){
+                iss >> mov;
+                h_p += (mov[0] - '0'); // Horizontal position
+            }
+            else if(dir == "up"){
+                iss >> mov;
+                up += (mov[0] - '0'); // Vertical position decrease.
+            }
+            else if(dir == "down"){
+                iss >> mov;
+                down += (mov[0] - '0'); // Vertical position increase.
+            }
+            else{
+                std::cerr << "Invalid format input!\n";
+                return -1;
+            }
         }
     }
-    str.clear();
+    ifs.clear();
     depth = h_p * (down - up);
     return depth;
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    std::string file = "input_day2.txt";
-    std::ifstream ifs(file.c_str());
-    long long int ans = readFromFile(ifs);
-    //std::cout << ans << "\n";
+    uint64_t ans = read_path_from_file("input_day2.txt");
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 2 - PART I *****\n";
+    std::cout << "\nCurrent depth level of the submarine: " << ans << "\n"; // Second star **
     return 0;
 }
