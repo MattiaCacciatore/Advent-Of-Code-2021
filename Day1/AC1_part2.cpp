@@ -1,50 +1,51 @@
+// Mattia Cacciatore - Computer Science student at Genoa University - Italy
 #include <iostream>
-#include <sstream>
-#include <fstream>
+#include <sstream>  // iss
+#include <fstream>  // ifs
 #include <string>
 //---------------------------------ADVENT OF CODE 2021 - DAY 1 - PART II ----------------------------------
-int count_from_file(std::istream& str){ // Stream.
-    if(!str.good()){         // Check if the file exists.
-    	str.clear();
-    	return -1;
-    }
+uint64_t count_from_file(std::string input){
+    std::ifstream ifs(input);
+    uint32_t s_w_one = 0, s_w_two = 0, s_w_three = 0; // Sliding windows and counter.
+    uint64_t curr_sum = 0, prev_sum = 0, n_count = 0;
+    if(ifs.good()){
+        std::string line;
+        std::istringstream iss; // Input stream to operate on strings.
 
-    std::string line;
-    std::istringstream iss; // Input stream to operate on strings.
-    int s_w_one = 0, s_w_two = 0, s_w_three = 0, curr_sum = 0, prev_sum = 0, n_count = 0; // Sliding windows and counter.
-    getline(str, line);     // E.g. line = "163".
-    iss.clear();            // Clear the stream.
-    iss.str(line);
-    iss >> s_w_one;         // E.g. "163" --> 163
-    getline(str, line);
-    iss.clear();
-    iss.str(line);
-    iss >> s_w_two;
-    getline(str, line);
-    iss.clear();
-    iss.str(line);
-    iss >> s_w_three;
-    curr_sum = s_w_one + s_w_two + s_w_three;
-
-    for(;!str.eof();){      // Until the end of file...
-        if(curr_sum > prev_sum){ n_count++;}
-        prev_sum = curr_sum;
-        getline(str, line);
+        getline(ifs, line);     // See input.
         iss.clear();
         iss.str(line);
-        s_w_one = s_w_two;
-        s_w_two = s_w_three;
+        iss >> s_w_one;
+        getline(ifs, line);
+        iss.clear();
+        iss.str(line);
+        iss >> s_w_two;
+        getline(ifs, line);
+        iss.clear();
+        iss.str(line);
         iss >> s_w_three;
-        curr_sum = curr_sum = s_w_one + s_w_two + s_w_three;
+        curr_sum = s_w_one + s_w_two + s_w_three;
+
+        for(;!ifs.eof();){
+            if(curr_sum > prev_sum) n_count++;
+
+            prev_sum = curr_sum;
+            getline(ifs, line);
+            iss.clear();
+            iss.str(line);
+            s_w_one = s_w_two;
+            s_w_two = s_w_three;
+            iss >> s_w_three;
+            curr_sum = s_w_one + s_w_two + s_w_three;
+        }
     }
-    str.clear();
+    ifs.clear();
     return n_count;
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    std::string file = "input_day1.txt";
-    std::ifstream ifs(file.c_str());
-    int ans = count_from_file(ifs); // Answer.
-    //std::cout << ans << "\n";
+    uint64_t ans = count_from_file("input_day1.txt"); // Answer.
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 1 - PART II *****\n";
+    //std::cout << "\nNumber of sums larger than the previous ones: " << ans << "\n"; // Second star **
     return 0;
 }
