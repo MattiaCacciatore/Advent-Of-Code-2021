@@ -1,20 +1,24 @@
+// Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include <iostream>
 #include <sstream>   // iss
 #include <fstream>   // ifs
 #include <string>
 #include <vector>
+
+typedef uint8_t precision;
 //---------------------------------ADVENT OF CODE 2021 - DAY 8 - PART I -----------------------------------
 //----------------------------------------------FUNCTIONS--------------------------------------------------
-std::vector<int> read_digit_from_file(std::istream& str){
-    std::vector<int> d_c; // Digit counter.
-    d_c.resize(4);        // 1,4,7 and 8.
-    if(str.good()){
+std::vector<precision> read_digit_from_file(std::string input){
+    std::vector<precision> d_c; // Digit counter.
+    d_c.resize(4);              // 1,4,7 and 8.
+    std::ifstream ifs(input);
+    if(ifs.good()){
         std::string line, digit;
         std::istringstream iss;
 
-        for(;!str.eof();){
-            str.clear();
-            getline(str, line);
+        for(;!ifs.eof();){
+            ifs.clear();
+            getline(ifs, line);
             iss.clear();
             iss.str(line);
             iss >> digit;
@@ -28,24 +32,23 @@ std::vector<int> read_digit_from_file(std::istream& str){
             	else if(digit.size() == 4) d_c[1]++; // 4
             	else if(digit.size() == 7) d_c[3]++; // 8
             	iss >> digit;
-			}
+	    }
         }
     }
-    str.clear();
+    ifs.clear();
     return d_c;
 }
 
-long long int sum_vector(std::vector<int> const &v){
-	long long int sum = 0;
-	for(size_t i = 0, dim = v.size(); i < dim; ++i){ sum += v[i];}
-	return sum;
+uint64_t sum_vector(std::vector<precision> const &v){
+    uint64_t sum = 0;
+    for(size_t i = 0, dim = v.size(); i < dim; ++i){ sum += v[i];}
+    return sum;
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    std::string file = "input_day8.txt";
-    std::ifstream ifs(file.c_str());
-    std::vector<int> digit_counter = read_digit_from_file(ifs);
-    long long int ans = sum_vector(digit_counter);
-    //std::cout << ans << "\n";
+    std::vector<precision> digit_counter = read_digit_from_file("input_day8.txt");
+    uint64_t ans = sum_vector(digit_counter);
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 8 - PART I *****\n";
+    //std::cout << "\n1,4,7 and 8 appear: " << ans << " times\n"; // Fifteenth star ***************
     return 0;
 }
