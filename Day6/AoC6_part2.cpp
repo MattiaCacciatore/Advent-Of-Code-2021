@@ -1,13 +1,15 @@
+// Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include <iostream>
 #include <sstream>  // iss
 #include <fstream>  // ifs
 #include <string>
 #include <vector>
-#include <limits>   // size_t limit
+
+typedef int64_t precision;
 //---------------------------------ADVENT OF CODE 2021 - DAY 6 - PART II ----------------------------------
 //-------------------------------------------HELPER FUNCTIONS----------------------------------------------
-void daytime(std::vector<size_t> &s_f){
-    size_t d0 = s_f[0];
+void daytime(std::vector<precision> &s_f){
+    precision d0 = s_f[0];      // Most efficient solution!
     s_f[0] = s_f[1];
     s_f[1] = s_f[2];
     s_f[2] = s_f[3];
@@ -19,27 +21,25 @@ void daytime(std::vector<size_t> &s_f){
     s_f[8] = d0;                // Welcome new fishes!
 }
 //-------------------------------------------------FUNCTIONS-----------------------------------------------
-size_t calculate_growth_rate(std::vector<size_t> &s_f, int days){
-    size_t total = 0;
-    if(s_f.size() == 9){
-       for(int d = 0; d < days; ++d){daytime(s_f);}
-       total = s_f[0] + s_f[1] + s_f[2] + s_f[3] + s_f[4] + s_f[5] + s_f[6] + s_f[7] + s_f[8];
-    }
+uint64_t calculate_growth_rate(std::vector<precision> &s_f, uint32_t days){
+    for(int d = 0; d < days; ++d){daytime(s_f);}
+    uint64_t total = s_f[0] + s_f[1] + s_f[2] + s_f[3] + s_f[4] + s_f[5] + s_f[6] + s_f[7] + s_f[8];
     return total;
 }
 
-std::vector<size_t> read_fish_from_file(std::istream& str){
-    std::vector<size_t> s_f;    // School of fish.
-    s_f.resize(9);              // From day0 to day8.
-    if(str.good()){
-        std::string line;
-        char garbage;           // See input.
+std::vector<precision> read_fish_from_file(std::string input){
+    std::vector<precision> s_f;    // School of fish.
+    s_f.resize(9);                 // From day0 to day8.
+    std::ifstream ifs(input);
+    if(ifs.good()){
+        char garbage;              // See input.
         short int fish;
+        std::string line;
         std::istringstream iss;
 
-        for(;!str.eof();){
-            str.clear();
-            getline(str, line);
+        for(;!ifs.eof();){
+            ifs.clear();
+            getline(ifs, line);
             iss.clear();
             iss.str(line);
             iss >> fish;
@@ -54,26 +54,19 @@ std::vector<size_t> read_fish_from_file(std::istream& str){
 		else if(fish == 6) s_f[6]++;
 		else if(fish == 7) s_f[7]++;
 		else if(fish == 8) s_f[8]++;
-		else{
-		    std::cerr << "Invalid input format\n";
-		    s_f.clear();
-		    return s_f;
-		}
                 iss >> fish;
             }
         }
     }
-    str.clear();
+    ifs.clear();
     return s_f;
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    // Make sure i don't mess it up. It's big enough.
-    //std::cout << std::numeric_limits<std::size_t>::max();
-    std::string file = "input_day6.txt";
-    std::ifstream ifs(file.c_str());
-    std::vector<size_t> school_fish = read_fish_from_file(ifs);
-    size_t ans = calculate_growth_rate(school_fish, 256);
-    //std::cout << ans << "\n";
+    std::vector<precision> school_fish = read_fish_from_file("input_day6.txt");
+    uint32_t days = 256;
+    uint64_t ans = calculate_growth_rate(school_fish, days);
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 6 - PART II *****\n";
+    //std::cout << "\nThe number of fishes after " << days << " days is: " << ans << "\n"; // Twelveth star ************
     return 0;
 }
