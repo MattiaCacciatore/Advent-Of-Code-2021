@@ -1,21 +1,25 @@
+// Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include <iostream>
 #include <sstream>   // iss
 #include <fstream>   // ifs
 #include <string>
 #include <vector>
+
+typedef uint8_t precision;
 //---------------------------------ADVENT OF CODE 2021 - DAY 9 - PART I -----------------------------------
 //----------------------------------------------FUNCTIONS--------------------------------------------------
-std::vector<std::vector<short int>> read_map_from_file(std::istream& str){
-    std::vector<std::vector<short int>> m; // Map.
-    if(str.good()){
+std::vector<std::vector<precision>> read_map_from_file(std::string input){
+    std::vector<std::vector<precision>> m; // Map.
+    std::ifstream ifs(input);
+    if(ifs.good()){
+        precision h;                       // Height.
+        std::vector<precision> c;          // Caves.
         std::string line, cave;
-        short int h;                       // Height.
-        std::vector<short int> c;          // Caves.
         std::istringstream iss;
 
-        for(;!str.eof();){
-            str.clear();
-            getline(str, line);
+        for(;!ifs.eof();){
+            ifs.clear();
+            getline(ifs, line);
             iss.clear();
             iss.str(line);
             iss >> cave;
@@ -30,13 +34,13 @@ std::vector<std::vector<short int>> read_map_from_file(std::istream& str){
 	    }
         }
     }
-    str.clear();
+    ifs.clear();
     return m;
 }
 
-long long int sum_all_low_points(std::vector<std::vector<short int>> const& m){
-    long long int sum = 0;
-    short int n, up, down, left, right;
+uint64_t sum_all_low_points(std::vector<std::vector<precision>> const& m){
+    uint64_t sum = 0;
+    precision n, up, down, left, right;
     for(ssize_t r = 0, row = m.size(); r < row; ++r){
         for(ssize_t c = 0, col = m[r].size(); c < col; ++c){
             n = m[r][c];
@@ -54,10 +58,9 @@ long long int sum_all_low_points(std::vector<std::vector<short int>> const& m){
 }
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    std::string file = "input_day9.txt";
-    std::ifstream ifs(file.c_str());
-    std::vector<std::vector<short int>> cave_map = read_map_from_file(ifs);
-    long long int ans = sum_all_low_points(cave_map);
-    //std::cout << ans << "\n";
+    std::vector<std::vector<precision>> cave_map = read_map_from_file("input_day9.txt");
+    uint64_t ans = sum_all_low_points(cave_map);
+    std::cout << "***** ADVENT OF CODE 2021 - DAY 9 - PART I *****\n";
+    //std::cout << "\nThe number of low points is: " << ans << "\n"; // Seventeenth star *****************
     return 0;
 }
