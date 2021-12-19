@@ -59,6 +59,6 @@ int main(){
     uint32_t days = 80;
     size_t ans = calculate_growth_rate(school_fish, days);
     std::cout << "***** ADVENT OF CODE 2021 - DAY 6 - PART I *****\n";
-    //std::cout << "\nThe number of fishes after 80 days is: " << ans << "\n"; // Eleventh star ***********
+    //std::cout << "\nThe number of fishes after " << days << " days is: " << ans << "\n"; // Eleventh star ***********
     return 0;
 }
