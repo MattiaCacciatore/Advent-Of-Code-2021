@@ -1,7 +1,7 @@
 // Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include "AoC9_part2.h"
-
-static size_t x_size = 0;  // Map size.
+// Map size.
+static size_t x_size = 0;
 static size_t y_size = 0;
 //---------------------------------ADVENT OF CODE 2021 - DAY 9 - PART II ----------------------------------
 //------------------------------------------HELPER FUNCTIONS-----------------------------------------------
@@ -11,7 +11,7 @@ void set_map_size(std::vector<std::vector<precision>> const &m){
 }
 // Recursive.
 uint64_t sum_basin_r(std::vector<std::vector<precision>> &m, ssize_t x_pos, ssize_t y_pos){
-    uint64_t b_s = 0;                            // Basin size
+    uint64_t b_s = 0;                            // Basin size.
     if(x_pos >= 0 && y_pos >= 0 && x_pos < x_size && y_pos < y_size && m[y_pos][x_pos] < 9){
         b_s++;
         m[y_pos][x_pos] = 9;                     // Y before X because map orientation.
@@ -53,8 +53,8 @@ std::vector<std::vector<precision>> read_map_from_file(std::string input){
 	std::vector<std::vector<precision>> m; // Map.
 	std::ifstream ifs(input);
     if(ifs.good()){
-        precision h;                       // Height.
-        std::vector<precision> c;          // Caves.
+        precision h;                           // Height.
+        std::vector<precision> c;              // Caves.
         std::string line, cave;
         std::istringstream iss;
 
@@ -66,13 +66,13 @@ std::vector<std::vector<precision>> read_map_from_file(std::string input){
             iss >> cave;
             for(;iss;){
                 for(size_t i = 0, dim = cave.size(); i < dim; ++i){
-                    h = (cave[i] - '0');   // Getting the number.
+                    h = (cave[i] - '0');       // Getting the number.
                     c.push_back(h);
                 }
-                m.push_back(c);            // Cave complete.
+                m.push_back(c);                // Cave complete.
                 c.clear();
             	iss >> cave;
-			}
+	    }
         }
     }
     ifs.clear();
