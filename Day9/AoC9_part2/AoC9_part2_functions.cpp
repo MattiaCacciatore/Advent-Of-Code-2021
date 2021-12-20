@@ -50,8 +50,8 @@ std::vector<ssize_t> find_all_low_points(std::vector<std::vector<precision>> con
 }
 //----------------------------------------------FUNCTIONS--------------------------------------------------
 std::vector<std::vector<precision>> read_map_from_file(std::string input){
-	std::vector<std::vector<precision>> m; // Map.
-	std::ifstream ifs(input);
+    std::vector<std::vector<precision>> m; // Map.
+    std::ifstream ifs(input);
     if(ifs.good()){
         precision h;                           // Height.
         std::vector<precision> c;              // Caves.
