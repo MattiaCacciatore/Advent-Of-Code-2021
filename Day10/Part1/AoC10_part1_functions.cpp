@@ -3,8 +3,8 @@
 //---------------------------------ADVENT OF CODE 2021 - DAY 10 - PART I ----------------------------------
 //----------------------------------------------FUNCTIONS--------------------------------------------------
 std::vector<std::vector<char>> read_navigation_from_file(std::string input){
-	std::vector<std::vector<char>> n; // Navigation.
-	std::ifstream ifs(input);
+    std::vector<std::vector<char>> n; // Navigation.
+    std::ifstream ifs(input);
     if(ifs.good()){
         char chunk;
         std::vector<char> c_l;        // Chunks line.
@@ -19,9 +19,9 @@ std::vector<std::vector<char>> read_navigation_from_file(std::string input){
             for(;iss;){
                 c_l.push_back(chunk); // Complete line.
             	iss >> chunk;
-			}
+	    }
             n.push_back(c_l);
-			c_l.clear();
+	    c_l.clear();
         }
     }
     ifs.clear();
