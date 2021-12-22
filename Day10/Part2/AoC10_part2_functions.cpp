@@ -62,7 +62,6 @@ std::vector<std::string> parse_navigation_subsystem(std::vector<std::string> &c)
         else{                      // Corrupted line, need to clear the stack.
             for(size_t j = 0, s_length = s.size(); j < s_length; ++j) s.pop(); // Clear the stack.
         }
-
     }
     return m_c;
 }
