@@ -15,15 +15,15 @@ uint64_t calculate_score(std::string const &s){
 }
 //----------------------------------------------FUNCTIONS--------------------------------------------------
 std::vector<std::string> read_navigation_from_file(std::string input){
-	std::vector<std::string> n_s; // Navigation subsystem.
-	std::ifstream ifs(input);
+    std::vector<std::string> n_s; // Navigation subsystem.
+    std::ifstream ifs(input);
     if(ifs.good()){
         std::string line;
         for(;!ifs.eof();){
             getline(ifs, line);
-            n_s.push_back(line); // Complete line.
-        }
-    }
+            n_s.push_back(line); // Complete line. Yep, it was kind of stupid idea
+        }                        // to use vector<char> instead string in the previous
+    }                            // challenge.
     ifs.clear();
     return n_s;
 }
