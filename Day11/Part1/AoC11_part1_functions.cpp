@@ -11,10 +11,10 @@
 * My idea was:
 * Increment all cells's energy by 1, then check each cell from the top left to the bottom right of the cavern 
 * (aka grid/matrix), when i find a cell with an energy's value bigger than 9 then i flash it by increment all
-*  adjacent cells's energy by 1 and label it "flashed". This solution seems to be wrong because the final
-*  result is different from the result shown here: https://adventofcode.com/2021/day/11. [after step 1]
+* adjacent cells's energy by 1 and label it "flashed". This solution seems to be wrong because the final
+* result is different from the result shown here: https://adventofcode.com/2021/day/11. [after step 1]
 *
-* So...i just give up for the moment, maybe in the future i'll end this challenge. I'd wish a happy Christmas
+* So...i just give up for the moment, maybe in the future i'll end this challenge. I wish a happy Christmas
 * to you and your family. I enjoyed this event and these challenges. Thanks Eric Wastl.
 */
 //---------------------------------ADVENT OF CODE 2021 - DAY 11 - PART I ----------------------------------
