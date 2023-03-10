@@ -1,7 +1,7 @@
 // Mattia Cacciatore - Computer Science student at the University of Genoa - Italy
 #include "AoC11.h"
-//---------------------------------ADVENT OF CODE 2021 - DAY 11 - PART I ----------------------------------
-//---------------------------------------------HELPER FUNCTIONS--------------------------------------------
+//--------------------------------- ADVENT OF CODE 2021 - DAY 11 ------------------------------------------
+//-----------------------------------------HELPER FUNCTIONS------------------------------------------------
 /* Increment the energy of all octopuses by 1. */
 void increment_energy(){
     for(size_t i = 0; i < CAVERN_SIZE; ++i){
