@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>   // iss
 #include <fstream>   // ifs
+#include <vector>
 #include <string>
 
 #define CAVERN_SIZE 10
@@ -11,8 +12,8 @@ struct dumbo_octopus{
     bool flashed;
 };
 
-dumbo_octopus cavern[CAVERN_SIZE][CAVERN_SIZE]; // Fixed input.
+inline dumbo_octopus cavern[CAVERN_SIZE][CAVERN_SIZE]; // Fixed input.
 //------------------------------------------------FUNCTIONS------------------------------------------------
 void read_cavern_from_file(std::string);
 
-uint64_t count_flashes(uint64_t);
+std::vector<uint64_t> count_flashes(uint64_t);
