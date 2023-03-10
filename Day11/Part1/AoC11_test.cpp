@@ -2,7 +2,7 @@
 #include "AoC11.h"
 //---------------------------------------------------TEST--------------------------------------------------
 int main(){
-    uint64_t steps = 1000;
+    uint64_t steps = 1000; // Set the number of steps manually.
     read_cavern_from_file("input_day11.txt");
     std::vector<uint64_t> ans; // Answers.
 	ans = count_flashes(steps); // Total flashes and first step when all octopuses flash.
