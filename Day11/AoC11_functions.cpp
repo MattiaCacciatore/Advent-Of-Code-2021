@@ -32,27 +32,27 @@ void increment_adjacent_energy(ssize_t r, ssize_t c){
 		// BOTTOM LEFT.
 		if((c - 1) >= 0) cavern[r+1][c-1].energy++;
 	}
-	// 	LEFT.
+	// LEFT.
 	if((c - 1) >= 0) cavern[r][c-1].energy++;	
 }
 
 uint64_t flashes_dumbo_octopuses(){
 	uint64_t no_flashes = 0; // Number of flashes. Reset.
-    // (CAVERN_SIZE * 2) is an overestimation of the number of step needed to spread all flashes.
+    	// (CAVERN_SIZE * 2) is an overestimation of the number of step needed to spread all flashes.
 	for(size_t s = 0; s < (CAVERN_SIZE * 2); ++s){
 		for(size_t i = 0; i < CAVERN_SIZE; ++i){
-        	for(size_t j = 0; j < CAVERN_SIZE; ++j){
-                // Only in the first step it incresases the energy of all octopuses by 1, then
-                // it'll spread the flashes.
-        		if(s == 0) cavern[i][j].energy++;
+        		for(size_t j = 0; j < CAVERN_SIZE; ++j){
+                		// Only in the first step it incresases the energy of all octopuses by 1, then
+                		// it'll spread the flashes.
+        			if(s == 0) cavern[i][j].energy++;
         	
-        		if(cavern[i][j].energy > 9 && !cavern[i][j].flashed){
-        			cavern[i][j].flashed = true;
-        			no_flashes++;
-        			increment_adjacent_energy(i,j);
+        			if(cavern[i][j].energy > 9 && !cavern[i][j].flashed){
+        				cavern[i][j].flashed = true;
+        				no_flashes++;
+        				increment_adjacent_energy(i,j);
 				}
-        	}
-    	}
+        		}
+    		}
 	}
 	return no_flashes;
 }
@@ -71,46 +71,37 @@ void reset_energy(){
 
 bool check_all_flashed(){
 	for(size_t i = 0; i < CAVERN_SIZE; ++i){
-        for(size_t j = 0; j < CAVERN_SIZE; ++j){
-            if(!cavern[i][j].flashed) return false;
-        }
-    }
-    return true;
-}
-
-void print_matrix(){
-	for(size_t i = 0; i < CAVERN_SIZE; ++i){
-        for(size_t j = 0; j < CAVERN_SIZE; ++j){
-            std::cout << cavern[i][j].energy << "\t";
-        }
-        std::cout << "\n";
-    }
+        	for(size_t j = 0; j < CAVERN_SIZE; ++j){
+            		if(!cavern[i][j].flashed) return false;
+        	}
+    	}
+   	return true;
 }
 //------------------------------------------------FUNCTIONS------------------------------------------------
 void read_cavern_from_file(std::string input){
 	std::ifstream ifs(input);
-    if(ifs.good()){
-        int fe;                     // Fish's energy.
-        size_t r = 0, c = 0;
-        std::string line, cave;
-        std::istringstream iss;
+    	if(ifs.good()){
+        	int fe;                     // Fish's energy.
+        	size_t r = 0, c = 0;
+        	std::string line, cave;
+        	std::istringstream iss;
 
-        for(;!ifs.eof();){
-            getline(ifs, line);
-            iss.clear();
-            iss.str(line);
-            iss >> cave;
-            for(;iss; ++r){
-                for(size_t i = 0, dim = cave.size(), c = 0; i < dim; ++i, ++c){
-                    fe = (cave[i] - '0');   // Getting the energy value.
-                    cavern[r][c].energy = fe;
-                    cavern[r][c].flashed = false;
-                }
-            	iss >> cave;
+        	for(;!ifs.eof();){
+            		getline(ifs, line);
+            		iss.clear();
+            		iss.str(line);
+            		iss >> cave;
+            		for(;iss; ++r){
+                		for(size_t i = 0, dim = cave.size(), c = 0; i < dim; ++i, ++c){
+                    			fe = (cave[i] - '0');   // Getting the energy value.
+                    			cavern[r][c].energy = fe;
+                    			cavern[r][c].flashed = false;
+                		}
+            			iss >> cave;
 			}
-        }
-    }
-    ifs.clear();
+        	}
+    	}
+    	ifs.clear();
 }
 
 std::vector<uint64_t> count_flashes(uint64_t steps){
@@ -118,13 +109,13 @@ std::vector<uint64_t> count_flashes(uint64_t steps){
 	res.push_back(0); // Total flashes.
 	res.push_back(0); // First step when all octopuses flash.
 	bool first_flash = true;
-    for(uint64_t s = 0; s < steps; ++s){
-        res[0] += flashes_dumbo_octopuses(); // First step.
-        if(first_flash && check_all_flashed()){
-        	res[1] = s + 1;
-        	first_flash = false;
-		}
-        reset_energy();            // Second and last step.
-    }
-    return res;
+    	for(uint64_t s = 0; s < steps; ++s){
+        	res[0] += flashes_dumbo_octopuses(); // First step.
+        	if(first_flash && check_all_flashed()){
+        		res[1] = s + 1;
+        		first_flash = false;
+			}
+        	reset_energy();            // Second and last step.
+    	}
+    	return res;
 }
